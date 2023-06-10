@@ -1,0 +1,60 @@
+<aside id="sidebar1">
+
+    <!-- Add for loop for genre-->
+    <header>
+        <h2>Featured Track</h2>
+    </header>
+    <div style="word-wrap: break-word">
+        <h3><a href="/browse_tracks?track_id={{random_track.track_id}}">{{ random_track.title }}</a></h3>
+        <h4>Track Duration: {{ random_track.track_duration }} </h4>
+        <h4>Track ID: {{ random_track.track_id }}</h4>
+        <h4>Track Artist: {{ random_track.artist.full_name }}</h4>
+        <h4>Track Genres: </h4>
+        {% for genre in random_track.genres %}
+        <h5>{{ genre.name }}</h5>
+        {% endfor %}
+        <h4>Track URL: {{ random_track.track_url }}</h4>
+        <h4>Track Album: {{ random_track.album.title }}</h4>
+    </div>
+    <br>
+    <br>
+    <br>
+    <header>
+        <h2>Featured Album</h2>
+    </header>
+    <div style="word-wrap: break-word; margin-bottom:5%">
+        <h3><a href="/browse_albums?album_id={{random_album.album_id}}">{{ random_album.title }}</a></h3>
+        <h4 style="margin-top:10px">Album ID: {{ random_album.album_id }}</h4>
+        {% if random_album_tracks|length <= 5 %}
+            {% for i in range(0,random_album_tracks|length) %}
+            <h4>Track {{i+1}}: <a href="/browse_tracks?track_id={{random_album_tracks[i].track_id}}">{{ random_album_tracks[i].title }}</a></h4>
+            <h5>Track ID: {{ random_album_tracks[i].track_id }}</h5>
+            <h5>Track Artist: {{ random_album_tracks[i].artist.full_name }}</h5>
+            <h5>Track Genres: </h5>
+            {% for genre in random_album_tracks[i].genres %}
+                <h5 style="margin-top:1px;margin-left:30px">{{ genre.name }}</h5>
+            {% endfor %}
+            <h5>Track Duration: {{ random_album_tracks[i].track_duration }} </h5>
+            <h5>Track URL: {{ random_album_tracks[i].track_url }}</h5>
+            {% endfor %}
+        {% else %}
+            {% for i in range(0,5) %}
+            <h4>Track {{i+1}}: <a href="/browse_tracks?track_id={{random_album_tracks[i].track_id}}">{{ random_album_tracks[i].title }}</a></h4>
+            <h5>Track ID: {{ random_album_tracks[i].track_id }}</h5>
+            <h5>Track Artist: {{ random_album_tracks[i].artist.full_name }}</h5>
+            <h5>Track Genres: </h5>
+            {% for genre in random_album_tracks[i].genres %}
+                <h5 style="margin-top:1px;margin-left:30px">{{ genre.name }}</h5>
+            {% endfor %}
+            <h5>Track Duration: {{ random_album_tracks[i].track_duration }} </h5>
+            <h5>Track URL: {{ random_album_tracks[i].track_url }}</h5>
+            {% endfor %}
+            <h4>...</h4>
+        {% endif %}
+    </div>
+</aside>
+
+
+
+<!-- this actual sidebar is for Album Suggestions
+have to make this suggest albums -->

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--############################################
+    ############  NOTE  ########################
+    ############################################
+    - re-arrange the layout again (featured tracks and albums are out of position and looks awkward)
+-->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Music Library</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"/>
+</head>
+<body>
+    <div id="body">
+        <!-- navigator -->
+        {% include 'navigator.html' %}
+        {% include 'top_navigation.html' %}
+        <div id = "content-2">
+            <!-- header -->
+            {% include 'header.html' %}
+            <div id="container">
+                <!-- Include sidebar partial. -->
+                {% include 'sidebar1.html' %}
+
+                <!-- Main content block to be supplied by page. -->
+                {% block content %} {% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

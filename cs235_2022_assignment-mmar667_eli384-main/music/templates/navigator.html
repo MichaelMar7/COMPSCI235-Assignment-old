@@ -1,0 +1,20 @@
+<nav id = "nav">
+    <br>
+    <br>
+    <img id="logo" src="{{ url_for('static', filename='music_library.png') }} " />
+    <h1 id="nav-header">
+        {% if 'user_name' in session %} Hello, {{session['user_name']}} {% endif %}
+    </h1>
+    <br>
+    <a class="btn-nav" href="{{ url_for('home_bp.home') }}">Home</a>
+    <div>
+        <a class="btn-nav" href="{{ url_for('browse_bp.browse_tracks')}}">Browse Tracks</a>
+        <a class="btn-nav-sub" href="{{ url_for('browse_bp.browse_tracks_by_artist')}}">Browse Tracks by Artist</a>
+        <a class="btn-nav-sub" href="{{ url_for('browse_bp.browse_tracks_by_genre')}}">Browse Tracks by Genre</a>
+        <a class="btn-nav" href="{{ url_for('browse_bp.browse_albums')}}">Browse Albums</a>
+    </div>
+    <div id="nav-footer">
+        COMPSCI 235 MMAR667 ELI384<img id="small-logo" src="{{ url_for('static', filename='vibingpepe.gif') }} " />
+    </div>
+</nav>
+
